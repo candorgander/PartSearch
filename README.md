@@ -1,20 +1,29 @@
-# menu-search
+<p align="center">
+  <img alt="Part search" src="icons/icon-full.png" width="200" /></a>
+</p>
 
-A demo of the [search API](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/search/).
+<p align="center"><a rel="noreferrer noopener" href="https://github.com/candorgander/PartSearch/releases/latest"><img alt="Chrome Web Store" src="https://img.shields.io/badge/Chrome-141e24.svg?&style=for-the-badge&logo=google-chrome&logoColor=white"></a>  <a rel="noreferrer noopener" href="https://addons.mozilla.org/en-US/firefox/addon/partsearch/"><img alt="Firefox Add-ons" src="https://img.shields.io/badge/Firefox-141e24.svg?&style=for-the-badge&logo=firefox-browser&logoColor=white"></a>
+
+---
+
+# PartSearch
+
+A search tool to quickly find parts in your favorite Electronics component distributor.
 
 ## What it does
 
-This add-on retrieves the list of installed search engines, and adds a context menu item for each one, displayed in the "selection" context.
+PartSearch adds a context menu (right click menu) item that allows you to search for any part number by simply selecting the part number and right clicking and choosing your distributor. Right now only shows results for the .in domain for Digikey and Mouser,but customization is coming in future updates.
 
-Each context menu item searches for the selected text using the corresponding search engine.
+## Example
 
-This enables a user to:
-* select some text to search for
-* activate the context menu
-* choose which search engine to use for the search.
+1) Select the part number in your browser
 
-## What it shows
+![Select the part number in your browser](images/Select.png)
 
-* How to retrieve the set of search engines.
-* How to search using a specific search engine.
+2) Right click on the selected text
 
+![Right click on the selected text](images/RClick.png)
+
+3) Choose your distributor (More coming upon request)
+
+![Choose Distributor](images/ChooseDistributor.png)
