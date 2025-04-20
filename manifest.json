@@ -10,11 +10,13 @@
   },
   "background": {
     "scripts": [
+      "compat.js",
       "background.js"
     ]
   },
   "permissions": [
     "contextMenus",
+    "storage",
     "tabs"
   ],
   "icons": {
@@ -22,5 +24,11 @@
     "32": "icons/search-32.png",
     "48": "icons/search-48.png",
     "96": "icons/search-96.png"
-  }
+  },
+  "options_ui": {
+  "page": "options.html",
+  "open_in_tab": true
+},
+"options_page": "options.html"
+
 }

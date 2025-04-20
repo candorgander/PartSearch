@@ -1,11 +1,7 @@
-/*
-  Platform Independence
-*/
-
+// Create a browser alias if needed (for Firefox compatibility)
 if (typeof browser === "undefined") {
   var browser = chrome;
 }
-
 
 browser.contextMenus.create({
   id: "LCSC",
@@ -23,32 +19,41 @@ browser.contextMenus.create({
   contexts: ["selection"],
 });
 
-/*
-Search using the search engine whose name matches the
-menu item's ID.
-*/
+// On first install, open options page
+browser.runtime.onInstalled.addListener((details) => {
+  // if (details.reason === "install") {
+    if (browser.runtime.openOptionsPage) {
+      browser.runtime.openOptionsPage();
+    } else {
+      window.open(browser.runtime.getURL("options.html"));
+    }
+  // }
+});
+
 browser.contextMenus.onClicked.addListener((info, tab) => {
-  switch (info.menuItemId) {
-    case "LCSC":
-      browser.tabs.create({
-        url:
-          "https://www.lcsc.com/search?q=" +
-          encodeURIComponent(info.selectionText),
-      });
-      break;
-    case "Mouser":
-      browser.tabs.create({
-        url:
-          "https://www.mouser.in/c/?q=" +
-          encodeURIComponent(info.selectionText),
-      });
-      break;
-    case "Digikey":
-      browser.tabs.create({
-        url:
-          "https://www.digikey.in/en/products?keywords=" +
-          encodeURIComponent(info.selectionText),
-      });
-      break;
-  }
+  browser.storage.local.get({
+    lcscTLD: "com",
+    mouserTLD: "in",
+    digikeyTLD: "in"
+  }, (tlds) => {
+    const query = encodeURIComponent(info.selectionText);
+
+    switch (info.menuItemId) {
+      case "LCSC":
+        browser.tabs.create({
+          url: `https://www.lcsc.${tlds.lcscTLD}/search?q=${query}`,
+        });
+        break;
+      case "Mouser":
+        browser.tabs.create({
+          url: `https://www.mouser.${tlds.mouserTLD}/c/?q=${query}`,
+        });
+        break;
+      case "Digikey":
+        browser.tabs.create({
+          url: `https://www.digikey.${tlds.digikeyTLD}/en/products?keywords=${query}`,
+        });
+        break;
+    }
+  });
 });

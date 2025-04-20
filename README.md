@@ -12,7 +12,7 @@ A search tool to quickly find parts in your favorite Electronics component distr
 
 ## What it does
 
-PartSearch adds a context menu (right click menu) item that allows you to search for any part number by simply selecting the part number and right clicking and choosing your distributor. Right now only shows results for the .in domain for Digikey and Mouser,but customization is coming in future updates.
+PartSearch adds a context menu (right click menu) item that allows you to search for any part number by simply selecting the part number and right clicking and choosing your distributor. When you install the extension, you are promted to enter your preferred domain TLDs according to your country.
 
 ## Example
 
